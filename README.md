@@ -12,7 +12,7 @@ docker-compose build
 
 ## node_modulesインストール
 ```
-docker-compose run --rm front_node sh
+docker-compose run --rm front_node bash
 npm install
 exit
 ```
@@ -26,18 +26,23 @@ docker-compose up -d
 http://localhost:8000
 
 # 備忘録. プロジェクト初期化手順
-## コンテナを一時的に起動
+## 1. ビルド
 ```
-docker-compose run --rm front_node sh
+docker-compose build
 ```
 
-## gatsbyjs作成
+## 2. コンテナを一時的に起動
+```
+docker-compose run --rm front_node bash
+```
+
+### (1). gatsbyjs作成
 ```
 gatsby new
 ```
 
-2022/05/31 ↑これエラーなった。(Dockerコンテナ内の権限？)  
-エラーメッセージを参考にホストOS上で以下を実行してgatsbyjsのgitから直接cloneするしかない？
+### (2). 起動
 ```
-git clone https://github.com/gatsbyjs/gatsby-starter-minimal-ts.git app --recursive --depth=1 --quiet
+cd my-gatsby-site
+gatsby develop
 ```

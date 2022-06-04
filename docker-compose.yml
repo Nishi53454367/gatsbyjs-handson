@@ -8,4 +8,4 @@ services:
       - ./app:/app
     ports:
       - 8000:8000
-    command: gatsby develop
+    command: cd my-gatsby-site && gatsby develop
