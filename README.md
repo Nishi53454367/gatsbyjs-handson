@@ -11,9 +11,19 @@ docker-compose build
 ```
 
 ## 2. node_modulesインストール
+
+### コンテナ一時起動
 ```
 docker-compose run --rm front_node bash
-npm install
+```
+
+### インストール
+```
+npm ci
+```
+
+### 終了
+```
 exit
 ```
 
