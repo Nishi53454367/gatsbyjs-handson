@@ -1,5 +1,11 @@
 import type { GatsbyConfig } from "gatsby"
 
+// .env設定
+const path = require('path');
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+});
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `My Gatsby Site`,
@@ -21,6 +27,18 @@ const config: GatsbyConfig = {
     },
     "gatsby-plugin-mdx",
     "gatsby-transformer-sharp",
+    {
+      resolve: 'gatsby-source-microcms',
+      options: {
+        apiKey: process.env.MICRO_CMS_API_KEY,
+        serviceId: 'komegura',
+        apis: [
+          {
+            endpoint: 'items',
+          },
+        ],
+      },
+    }
   ],
 }
 
